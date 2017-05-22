@@ -1,3 +1,4 @@
+
 In this project, you'll get a chance to tackle some more advanced forms. This is the kind of thing you'll have to work with when handling user orders for anything more complicated than an e-book. In this case, we'll build the first three steps of a typical checkout process for booking a one-way flight:
 
 A typical airline booking flow:
@@ -7,3 +8,7 @@ A typical airline booking flow:
 3. Enter passenger information for all passengers
 4. Enter billing information
 5. Step 4 would be done via integration of something like Paypal, via a gem or an SDK or Stripe.
+
+# odin-flight-booker
+this is a project from The Odin Project.
+
