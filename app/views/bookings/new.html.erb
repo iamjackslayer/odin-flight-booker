@@ -1,0 +1,10 @@
+<%= form_for(@booking,url: '/bookings/create', method: :post) do |f| %>
+	<%= f.hidden_field(:flight_id, value: @flight_id) %>
+	<h2>Your chosen flight id is <%= @chosen_flight.id %>. You are departing from <%= Airport.find(@chosen_flight.departing_airport_id).code %> to <%= Airport.find(@chosen_flight.arriving_airport_id).code %> on <%= @chosen_flight.departure_date %>. The duration of the flight will be about <%= @chosen_flight.duration %>. </h2>
+	<%= f.fields_for(:passengers) do |subf| %>
+		Passenger name: <%= subf.text_field(:name) %>
+		Email: <%= subf.email_field(:email) %>
+		<br>
+	<% end %>
+	<%= f.submit("confirm booking") %>
+<% end %>

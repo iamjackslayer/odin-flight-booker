@@ -1,0 +1,30 @@
+
+<%= form_for("flight", url: '/flights/index', method: :get) do |f| %>
+	<%= f.text_field(:search, placeholder: "search flight") %>
+	<%= f.label "From" %>
+	<%= f.select(:departing_airport_id, options_for_select(@airport_options)) %> <br><br>
+	<%= f.label "No. of passenger: "%><%= f.select(:passenger_no,[[1,1],[2,2],[3,3],[4,4]]) %> <br><br>
+	<%= f.date_select(:departure_date, order:[:day,:month,:year])%>
+	<%= f.submit("Search") %>
+<% end %>
+
+<% if (defined?(@queried_flights)) && (!@queried_flights.empty?) %>
+	
+
+	<%= form_for(:selected_flight, url: '/bookings/new', method: :get) do |form| %>
+		<%= form.hidden_field(:passenger_no,value: params["flight"][:passenger_no]) %>
+		<% @queried_flights.each do |q| %>
+		<p>Flight ID: <%= q.id %></p>
+			<h4>From: <%= q.from_airport.code %>  |  On: <%= q.departure_date %><%= form.radio_button(:selected_flight_id,q.id) %></h4>
+			<br>
+		<% end %>
+
+		<br><%= form.submit("confirm selected flight") %>
+		
+	<% end %>
+
+
+
+
+	
+<% end %>

@@ -1,0 +1,10 @@
+<h1> Thank you for booking with us! </h1>
+<h1>We wish you a safe and amazing journey to your destination.</h1>
+
+<p>Passengers information</p>
+	<% @booking.passengers.each do |p| %>
+	<p>Name: <%= p.name %></p>
+	<p>Email: <%= p.email %></p>
+	<% end %>
+
+<p>Your flight id is: <%=@booking.flight.id %></p>
