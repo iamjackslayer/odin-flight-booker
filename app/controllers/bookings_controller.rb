@@ -13,6 +13,7 @@ class BookingsController < ApplicationController
   	@booking = Booking.new(passengers_attributes)
   	@booking.flight = Flight.find(params[:booking][:flight_id].to_i)
   	@booking.save
+    PassengerMailer.welcome_email(@booking.passengers).deliver_now
   	render 'show'
   end
 
